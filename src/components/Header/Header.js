@@ -8,6 +8,7 @@ const Header = () => {
         C
         <img
           src={"https://www.cnjg.org/sites/default/files/coronavirus_0.png"}
+          alt=""
         />
         VID-19
       </h1>
