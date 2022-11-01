@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Styled } from "./LineChart.styled";
-import { getGlobalData } from "../../redux/covid/services";
+import { getGlobalData, getGlobalTotal } from "../../redux/covid/services";
 import { useDispatch, useSelector } from "react-redux";
 
 ChartJS.register(
@@ -28,6 +28,7 @@ const LineChart = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getGlobalData());
+    dispatch(getGlobalTotal());
   }, [dispatch]);
 
   const labels = useSelector((state) => state.covid.dates);

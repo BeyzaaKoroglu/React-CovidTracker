@@ -1,15 +1,33 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import ReactFlagsSelect from "react-flags-select";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setSelectedCountry,
+  selectedCountry,
+} from "../../redux/covid/covidSlice";
+import { getCountries, getCountryDetail } from "../../redux/covid/services";
 import { Styled } from "./SelectCountry.styled";
 
 const SelectCountry = () => {
-  const [selected, setSelected] = useState("");
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.covid.countries);
+  const selected = useSelector(selectedCountry);
+
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
+
+  const handleSelect = (code) => {
+    dispatch(setSelectedCountry(code));
+    dispatch(getCountryDetail(code));
+  };
 
   return (
     <Styled>
       <ReactFlagsSelect
         selected={selected}
-        onSelect={(code) => setSelected(code)}
+        onSelect={handleSelect}
+        countries={countries}
         placeholder="Global"
         searchable
       />
