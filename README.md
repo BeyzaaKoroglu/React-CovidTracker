@@ -1,5 +1,7 @@
 # Covid-19 Tracker
 
+Click [**here**](https://BeyzaaKoroglu.github.io/React-CovidTracker/) for Live Project
+
 ### TECHNOLOGIES
 
 - Axios
