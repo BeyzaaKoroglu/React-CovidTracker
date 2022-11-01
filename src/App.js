@@ -5,6 +5,7 @@ import LineChart from "./components/LineChart";
 import SelectCountry from "./components/SelectCountry";
 import { useSelector } from "react-redux";
 import { selectedCountry } from "../src/redux/covid/covidSlice";
+import BarChart from "./components/BarChart";
 
 function App() {
   useSelector(selectedCountry);
@@ -14,7 +15,7 @@ function App() {
       <Header />
       <SelectCountry />
       <DetailCards />
-      {useSelector(selectedCountry) === "" && <LineChart />}
+      {useSelector(selectedCountry) === "" ? <LineChart /> : <BarChart />}
     </div>
   );
 }
